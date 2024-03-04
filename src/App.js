@@ -2,17 +2,21 @@ import './App.css';
 import React, { useState, useCallback } from "react";
 import DurationExercise from "./components/DurationExercise";
 import RepetitionExercise from "./components/RepetitionExercise";
+import FlexibilityExercise from "./components/FlexibilityExercise";
 
 const MENU_SCREEN = "menu";
 const EXERCISE_SCREEN = "exercise";
 const DURATION_EXERCISE = "duration";
 const REPETITION_EXERCISE = "repetition";
+const FLEXIBILITY_EXERCISE = "flexibility";
 
 const exerciseList = [
   { type: DURATION_EXERCISE, name: "Running" },
   { type: DURATION_EXERCISE, name: "Jumping" },
   { type: DURATION_EXERCISE, name: "Swimming" },
-  { type: REPETITION_EXERCISE, name: "Push Ups" }
+  { type: REPETITION_EXERCISE, name: "Push Ups" },
+  { type: REPETITION_EXERCISE, name: "Planks" },
+  { type: FLEXIBILITY_EXERCISE, name: "Stretching" }
 ];
 
 function App() {
@@ -57,6 +61,14 @@ function App() {
       case REPETITION_EXERCISE:
         screenComponent = (
           <RepetitionExercise
+            exercise={currentExercise}
+            setMenuScreen={setMenuScreen}
+          />
+        );
+        break;
+      case FLEXIBILITY_EXERCISE:
+        screenComponent = (
+          <FlexibilityExercise
             exercise={currentExercise}
             setMenuScreen={setMenuScreen}
           />
